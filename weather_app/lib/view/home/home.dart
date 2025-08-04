@@ -129,7 +129,7 @@ class _homePageState extends State<homePage> {
               bottom: 0,
               child: CustomBottomBar(
                 onLocationPressed: (){
-                  fetchWeather(0.0, 0.0);
+                  // fetchWeather(0.0, 0.0);
                 }
               ),
             ),
