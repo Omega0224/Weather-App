@@ -25,7 +25,7 @@ class ApiWeather {
       lat = cityLat;
       lon = cityLon;
     }
-    final url = constructWeatherUrl();
+    final url = constructWeatherUrl(lat, lon);
     final response = await fetchData(url);
     return Weather.fromJson(response);
   }
@@ -37,7 +37,7 @@ class ApiWeather {
       lat = cityLat;
       lon = cityLon;
     }
-    final url = constructForecastUrl();
+    final url = constructForecastUrl(lat, lon);
     final response = await fetchData(url);
     return Forecast.fromJson(response);
   }
@@ -51,15 +51,15 @@ class ApiWeather {
   static Future<Weather> getCityWeather(double cityLat, double cityLon) async {
     lat = cityLat;
     lon = cityLon;
-    final url = constructWeatherUrl();
+    final url = constructWeatherUrl(lat, lon);
     final response = await fetchData(url);
     return Weather.fromJson(response);
   }
 
-  static String constructWeatherUrl() => 
+  static String constructWeatherUrl(double lat,double lon) => 
     '$baseUrl/weather?lat=$lat&lon=$lon&units=metric&appid=$apiKeys';
   
-  static String constructForecastUrl() =>
+  static String constructForecastUrl(double lat,double lon) =>
     '$baseUrl/forecast?lat=$lat&lon=$lon&units=metric&appid=$apiKeys';
 
   static String constructCityWeatherUrl(String cityName) =>
